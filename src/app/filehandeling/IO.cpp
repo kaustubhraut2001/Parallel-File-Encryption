@@ -16,5 +16,13 @@ IO::IO(const std::string &file_path)
 
 fstream IO::getfileStream()
 {
-	return std::move(fileStream);
+	return std::move(fileStream); // we are returing the filestream here
+}
+
+IO::~IO()
+{
+	if (fileStream.is_open())
+	{
+		fileStream.close(); // the destructor closing the file stream if it is open
+	}
 }
